@@ -6286,8 +6286,9 @@ figcaption {
 .video-move {
   z-index: 1;
   border-radius: var(--radius--regular);
-  width: 70%;
-  height: 550px;
+  aspect-ratio: 16 / 9;
+  width: 50%;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   position: relative;
