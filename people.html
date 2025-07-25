@@ -185,6 +185,41 @@
                     padding: 0 1vw;
                 }
             }
+            @media (max-width: 767px) {
+                .main-container, .nav-container {
+                    max-width: 100vw;
+                    padding: 0 2vw;
+                }
+                .team-section, .about-a-info-section, .section-card {
+                    padding: 0.5em 0.2em !important;
+                    margin-bottom: 1em;
+                }
+                .team-grid, .alumni {
+                    grid-template-columns: 1fr !important;
+                    gap: 0.5em !important;
+                }
+                .carousel {
+                    min-width: 0;
+                    width: 100%;
+                    border-radius: 10px;
+                }
+                .carousel-btn {
+                    width: 44px;
+                    height: 44px;
+                    font-size: 1.5rem;
+                }
+                .carousel-progress {
+                    font-size: 0.95rem;
+                    padding: 2px 8px;
+                }
+                .text-h1, .text-h2, .text-h3, .text-h6 {
+                    font-size: 1.1rem !important;
+                }
+                .nav-link {
+                    font-size: 1rem;
+                    padding: 0.6em 0.8em;
+                }
+            }
             .carousel-btn {
                 position: absolute;
                 top: 50%;

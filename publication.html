@@ -190,6 +190,10 @@
                 }
             }
             @media (max-width: 767px) {
+                .main-container, .nav-container {
+                    max-width: 100vw;
+                    padding: 0 2vw;
+                }
                 .columns-template-details {
                     flex-direction: column;
                 }
@@ -201,6 +205,19 @@
                     flex-direction: row;
                     gap: 0.5em;
                     padding: 1em 0.5em;
+                    justify-content: space-around;
+                    margin-bottom: 1em;
+                }
+                .card-template-details {
+                    padding: 1em 0.5em 0.5em 0.5em;
+                    margin-bottom: 1em;
+                }
+                .template-hero-title {
+                    font-size: 1.5rem;
+                }
+                .nav-link {
+                    font-size: 1rem;
+                    padding: 0.6em 0.8em;
                 }
             }
             .card-template-details { display: none; }
