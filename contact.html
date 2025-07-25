@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- This site was created in Webflow. https://www.webflow.com -->
 <html data-wf-domain="superior-space-template.webflow.io" data-wf-page="66324ca3963cb173dcf869ac" data-wf-site="66324ca3963cb173dcf869c8" lang="en">
     <head>
         <meta charset="utf-8"/>
@@ -47,12 +46,86 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
         <style>
-            #map {
-                height: 270px; /* 设置地图高度 */
-                width: 100%; /* 设置地图宽度 */
+            body {
+                font-family: 'Inter', 'Lora', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+                background: #fff;
+                color: #222;
+                line-height: 1.7;
             }
-            .leaflet-control-attribution a[href*="leaflet ukrainian support"]:before {
-                content: "";
+            .navbar-wrap {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+                background: #f4f8fd;
+            }
+            .nav-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .nav-link {
+                background: #bed6f1;
+                color: #fff;
+                font-weight: 700;
+                font-size: 1.13rem;
+                padding: 0.7em 1.6em;
+                border-radius: 8px;
+                transition: background 0.2s, color 0.2s;
+                letter-spacing: 0.02em;
+                position: relative;
+            }
+            .nav-link:hover {
+                background: #3385ff;
+                color: #fff;
+            }
+            .nav-link.w--current {
+                background: #4a90e2;
+                color: #fff !important;
+                box-shadow: 0 2px 8px rgba(0,86,214,0.08);
+            }
+            .brand-navbar {
+                height: 44px;
+                width: auto;
+            }
+            .main-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .footer {
+                background: #f4f8fd;
+                border-top: 1px solid #e3eaf5;
+                margin-top: 3em;
+                padding: 2em 0 1em 0;
+            }
+            .footer-last-block {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .section, .contect-c-hero {
+                background: #fff !important;
+            }
+            .contact-tile {
+                background: #f4f8fd;
+                border-radius: 14px;
+                box-shadow: 0 2px 12px rgba(0,86,214,0.04);
+                margin-bottom: 1.5em;
+            }
+            .contact-heading-wrap .body-2, .contact-heading-wrap .text-h6 {
+                color: #0056d6;
+            }
+            .nav-menu {
+                display: flex;
+                gap: 2.2em;
+            }
+            @media (max-width: 991px) {
+                .nav-menu {
+                    gap: 1em;
+                }
+            }
+            @media (max-width: 991px) {
+                .main-container, .nav-container {
+                    max-width: 98vw;
+                    padding: 0 1vw;
+                }
             }
         </style>
     </head>

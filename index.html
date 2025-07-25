@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- This site was created in Webflow. https://www.webflow.com -->
- <!-- 源码借鉴https://www.ruc-aim3.com/，如有侵权，请及时联系，我们立刻修改 -->
 <html data-wf-domain="superior-space-template.webflow.io" data-wf-page="66324ca3963cb173dcf869b1" data-wf-site="66324ca3963cb173dcf869c8" lang="en">
     <head>
         <meta charset="utf-8"/>
@@ -41,6 +39,128 @@
                 "hideDecimalForWholeNumbers": false
             };
         </script>
+        <style>
+            body {
+                font-family: 'Inter', 'Lora', 'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+                background: #fff;
+                color: #222;
+                line-height: 1.7;
+            }
+            .navbar-wrap {
+                box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+                background: #f4f8fd;
+                border-bottom: 2px solid #e3eaf5;
+            }
+            .nav-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .nav-menu {
+                display: flex;
+                gap: 2.2em;
+            }
+            .nav-link {
+                background: #bed6f1;
+                color: #fff;
+                font-weight: 700;
+                font-size: 1.13rem;
+                padding: 0.7em 1.6em;
+                border-radius: 8px;
+                transition: background 0.2s, color 0.2s;
+                letter-spacing: 0.02em;
+                position: relative;
+            }
+            .nav-link:hover {
+                background: #3385ff;
+                color: #fff;
+            }
+            .nav-link.w--current {
+                background: #4a90e2;
+                color: #fff !important;
+                box-shadow: 0 2px 8px rgba(0,86,214,0.08);
+            }
+            .brand-navbar {
+                height: 44px;
+                width: auto;
+            }
+            .main-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .footer {
+                background: #f4f8fd;
+                border-top: 1px solid #e3eaf5;
+                margin-top: 3em;
+                padding: 2em 0 1em 0;
+            }
+            .footer-last-block {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            /* 主页特殊区块背景色调整 */
+            .section, .overlap-master, .section-spacer, .home-a-overlap-section, .home-video-section, .faq-home {
+                background: #fff !important;
+            }
+            .service-card {
+                background: #f4f8fd;
+                border-radius: 14px;
+                box-shadow: 0 2px 12px rgba(0,86,214,0.04);
+                padding: 1.5em 1em;
+                margin-bottom: 1.5em;
+            }
+            .service-card .text-h3 {
+                color: #0056d6;
+            }
+            .award .paper-list {
+                background: #f4f8fd;
+                border-radius: 8px;
+                margin-bottom: 1em;
+                padding: 1em;
+                border: 1px solid #e3eaf5;
+            }
+            @media (max-width: 991px) {
+                .main-container, .nav-container {
+                    max-width: 98vw;
+                    padding: 0 1vw;
+                }
+                .nav-menu {
+                    gap: 1em;
+                }
+                .nav-link {
+                    font-size: 1rem;
+                    padding: 0.6em 1em;
+                }
+            }
+            .home-video-section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .home-video-section .main-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .video-move {
+                margin: 0 auto;
+                border: 2.5px solid #3385ff;
+                border-radius: 18px;
+                box-shadow: 0 4px 24px rgba(0,86,214,0.13);
+                overflow: hidden;
+            }
+            .award-scroll {
+                max-height: 400px;
+                overflow-y: auto;
+                border: 2px solid #e3eaf5;
+                border-radius: 14px;
+                background: #fff;
+                box-shadow: 0 2px 8px rgba(0,86,214,0.04);
+                padding: 1.2em 1.5em;
+                margin-bottom: 24px;
+            }
+        </style>
     </head>
     <body>
         <div class="navbar-wrap">
@@ -126,7 +246,7 @@
                 </div>
             </div>
             <div data-autoplay="true" data-loop="true" data-wf-ignore="true" data-w-id="0041e1e2-4e0b-850d-3221-597c00a4d2ff" class="video-move w-background-video w-background-video-atom">
-                <video id="0041e1e2-4e0b-850d-3221-597c00a4d2ff-video" autoplay="" loop="" muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover">
+                <video id="0041e1e2-4e0b-850d-3221-597c00a4d2ff-video" controls autoplay loop muted playsinline data-wf-ignore="true" data-object-fit="cover" style="width:100%;display:block;">
                     <source src="assets/demo/demo.mp4" data-wf-ignore="true"/>
                 </video>
             </div>
@@ -138,7 +258,7 @@
                         <div class="text-h2">获奖</div>
                     </div>
                     <div id="w-node-ae3f0f7c-ca80-34f9-3757-a96459f2f0c3-dcf869b1" class="expandable-master" style="max-width: none;">
-                        <div class="award">
+                        <div class="award award-scroll">
                             <ul role="list">
                                 <li class="paper-list">
                                     <div class="paper-title">
