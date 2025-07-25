@@ -203,24 +203,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="w-node-_14abcb9d-09ed-9ddc-0a6b-afefbe977540-dcf869ac" data-w-id="14abcb9d-09ed-9ddc-0a6b-afefbe977540" class="contact-map">
-                            <!-- <img src="https://assets-global.website-files.com/66324ca3963cb173dcf869c8/66336bc857eba941c8216c20_Contact%20Map.webp" loading="lazy" sizes="(max-width: 767px) 93vw, (max-width: 895px) 94vw, 842px" srcset="https://assets-global.website-files.com/66324ca3963cb173dcf869c8/66336bc857eba941c8216c20_Contact%20Map-p-500.webp 500w, https://assets-global.website-files.com/66324ca3963cb173dcf869c8/66336bc857eba941c8216c20_Contact%20Map-p-800.webp 800w, https://assets-global.website-files.com/66324ca3963cb173dcf869c8/66336bc857eba941c8216c20_Contact%20Map.webp 842w" alt="" class="image-cover"/> -->
-                            <div id="map"></div>
-                        </div>
-                        <script>
-                            var map = L.map('map', {attributionControl: false}).setView([24.6175, 118.3056], 17); // 设置地图中心和缩放级别
-                            var myAttrControl = L.control.attribution().addTo(map);
-                            myAttrControl.setPrefix('<a href="https://leafletjs.com/">Leaflet</a>');
-
-                            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                maxZoom: 19,
-                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                            }).addTo(map);
-                    
-                            var marker = L.marker([24.6175, 118.3056]).addTo(map) // 添加标记
-                                // .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-                                // .openPopup();
-                        </script>
                     </div>
                 </div>
             </div>
