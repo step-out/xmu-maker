@@ -1,0 +1,88 @@
+.people-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-bottom: 68px; }
+.photo-album { min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: #edf2f6; }
+.photo-track { display: flex; gap: 0; overflow-x: auto; scrollbar-width: thin; scroll-snap-type: x mandatory; border-radius: 6px; background: #dce5ec; }
+.photo-track:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.photo-track img { flex: 0 0 100%; width: 100%; min-width: 0; height: auto; aspect-ratio: 3 / 2; object-fit: contain; scroll-snap-align: start; }
+.album-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; min-height: 56px; padding-top: 10px; }
+.album-label { font-size: 10px; font-weight: 650; letter-spacing: .12em; color: var(--muted); }
+.album-controls { display: flex; align-items: center; gap: 12px; }
+.album-controls[hidden] { display: none; }
+.album-controls button { display: grid; place-items: center; width: 40px; min-height: 40px; padding: 0; border: 1px solid #ced9e3; border-radius: 50%; background: var(--paper); color: var(--ink); cursor: pointer; font-size: 17px; }
+.album-controls button:hover { color: var(--blue); border-color: var(--blue); }
+.album-count { min-width: 44px; text-align: center; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.album-autoplay { min-height: 40px; padding: 8px 12px; border: 1px solid #ced9e3; border-radius: 5px; background: var(--paper); color: var(--ink); font-size: 11px; cursor: pointer; }
+.album-autoplay:hover { color: var(--blue); border-color: var(--blue); }
+.album-autoplay[hidden] { display: none; }
+.member-section + .member-section { margin-top: 64px; }
+.members-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 28px; margin-bottom: 28px; border-top: 1px solid var(--line); }
+.members-heading h2 { font-size: 30px; }
+.member-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px 24px; }
+.member-card { min-width: 0; }
+.member-portrait { padding: 10px; border-radius: 10px; background: #edf2f6; }
+.member-portrait img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 5px; }
+.member-copy { padding-top: 18px; }
+.member-name { font-size: 20px; font-weight: 650; line-height: 1.4; overflow-wrap: anywhere; }
+.member-labels { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; margin-top: 10px; }
+.member-label { color: var(--muted); font-size: 12px; line-height: 1.65; }
+.member-role { padding: 2px 7px; border-radius: 4px; background: #edf2fc; color: var(--blue); font-size: 11px; }
+.member-affiliation { color: var(--muted); font-size: 13px; line-height: 1.8; margin-top: 12px; overflow-wrap: anywhere; }
+.member-website { display: inline-flex; align-items: center; gap: 18px; min-height: 40px; margin-top: 14px; padding: 7px 13px; border: 1px solid #c8d6f2; border-radius: 5px; background: #eef3ff; color: #204ebf; font-size: 12px; font-weight: 650; }
+.member-website:hover { background: #dfe9ff; border-color: #90ace6; }
+.member-website span { font-size: 16px; }
+.president-card { display: flex; align-items: center; gap: 36px; padding: 28px; border: 1px solid #d9e3ed; border-radius: 12px; background: #edf2f6; }
+.president-portrait { flex: 0 0 210px; }
+.president-portrait img { width: 210px; height: 210px; object-fit: cover; border-radius: 7px; }
+.president-card .member-copy { padding: 0; }
+.president-card .member-name { font-size: 34px; }
+.president-card .member-labels { margin-top: 16px; }
+.president-card .member-website { margin-top: 22px; background: var(--blue); border-color: var(--blue); color: white; }
+.president-card .member-website:hover { background: #1948bd; }
+.president-wordmark { margin-left: auto; padding-right: 16px; color: #70849c; font-size: 42px; font-weight: 650; letter-spacing: .025em; line-height: 1.1; }
+.alumni-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.alumni-card { padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.alumni-card .member-copy { display: flex; flex-direction: column; align-items: flex-start; height: 100%; padding: 0; }
+.alumni-card .member-name { font-size: 18px; }
+.alumni-card .member-website { margin-top: 20px; }
+@media (max-width: 1000px) {
+    .album-label { font-size: 9px; letter-spacing: .08em; }
+    .album-controls { gap: 8px; }
+    .member-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 20px; }
+    .alumni-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+    .people-gallery { gap: 12px; margin-bottom: 36px; }
+    .photo-album { padding: 7px; border-radius: 8px; }
+    .photo-track img { aspect-ratio: 4 / 3; }
+    .album-toolbar { justify-content: center; padding-top: 8px; min-height: 48px; }
+    .album-label { display: none; }
+    .album-controls { justify-content: space-between; gap: 4px; width: 100%; }
+    .album-controls button { width: 34px; min-height: 44px; border: 0; border-radius: 4px; background: transparent; }
+    .album-count { min-width: 32px; font-size: 10px; }
+    .album-autoplay { flex-basis: 100%; min-height: 44px; }
+    .member-section + .member-section { margin-top: 40px; }
+    .members-heading { padding-top: 24px; margin-bottom: 24px; }
+    .members-heading h2 { font-size: 26px; }
+    .member-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 16px; }
+    .member-portrait { padding: 7px; }
+    .member-copy { padding-top: 14px; }
+    .member-name { font-size: 18px; }
+    .member-label { font-size: 11px; }
+    .member-website { min-height: 44px; padding-inline: 12px; gap: 14px; }
+    .president-card { gap: 20px; padding: 18px; }
+    .president-portrait { flex-basis: 110px; }
+    .president-portrait img { width: 110px; height: 140px; }
+    .president-card .member-name { font-size: 26px; }
+    .president-card .member-labels { margin-top: 10px; }
+    .president-card .member-website { margin-top: 14px; }
+    .president-wordmark { display: none; }
+    .alumni-grid { gap: 12px; }
+    .alumni-card { padding: 18px 14px; }
+    .alumni-card .member-name { font-size: 17px; }
+    .member-affiliation { font-size: 12px; }
+}
+@media (max-width: 360px) {
+    .president-card { gap: 14px; padding: 14px; }
+    .president-portrait { flex-basis: 90px; }
+    .president-portrait img { width: 90px; height: 130px; }
+    .president-card .member-name { font-size: 24px; }
+}
