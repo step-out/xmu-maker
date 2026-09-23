@@ -58,6 +58,7 @@
 }
 
 .site-navigation {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -65,7 +66,29 @@
     padding: 0;
 }
 
+.site-nav-pill {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 0;
+    width: 0;
+    height: 44px;
+    border-radius: 7px;
+    background: #edf2fc;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: transform .32s cubic-bezier(.4, 0, .2, 1), width .32s cubic-bezier(.4, 0, .2, 1), opacity .18s ease;
+}
+
+/* JS positions the pill before revealing it, so it never flashes in the corner */
+.site-nav-pill.is-ready {
+    opacity: 1;
+}
+
 .site-navigation a {
+    position: relative;
+    z-index: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -81,16 +104,11 @@
     letter-spacing: .02em;
     text-decoration: none;
     white-space: nowrap;
-    transition: background-color .15s ease, color .15s ease;
+    transition: color .15s ease;
 }
 
-.site-navigation a:hover {
-    background: #edf2fc;
-    color: #2558d9;
-}
-
+.site-navigation a:hover,
 .site-navigation a[aria-current="page"] {
-    background: #edf2fc;
     color: #2558d9;
 }
 
@@ -178,6 +196,15 @@
         padding: 12px 16px;
     }
 
+    /* Narrow screens wrap the links into a list, so a sliding pill is meaningless */
+    .site-nav-pill {
+        display: none;
+    }
+
+    .site-navigation a[aria-current="page"] {
+        background: #edf2fc;
+    }
+
     .site-nav-ready .site-menu-toggle {
         display: inline-flex;
     }
@@ -192,7 +219,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .site-navigation a {
+    .site-navigation a,
+    .site-nav-pill {
         transition: none;
     }
 }

@@ -11,10 +11,11 @@
     <title>XMU MAKER</title>
     <link rel="icon" href="assets/logo/Maker-logo.webp" type="image/webp">
     <link rel="apple-touch-icon" href="assets/logo/Maker-logo.webp">
-    <link rel="stylesheet" href="assets/home.css">
-    <link rel="stylesheet" href="assets/site-nav.css">
-    <script src="assets/site-nav.js" defer></script>
-    <script src="assets/home.js" defer></script>
+    <link rel="stylesheet" href="assets/home.css?v=20260923">
+    <link rel="stylesheet" href="assets/site-nav.css?v=20260923">
+    <script src="assets/site-nav.js?v=20260923" defer></script>
+    <script src="assets/home.js?v=20260923" defer></script>
+    <script src="assets/reveal.js?v=20260923" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">跳到正文</a>
@@ -29,6 +30,7 @@
                 <span>菜单</span>
             </button>
             <nav class="site-navigation" id="site-navigation" aria-label="主导航">
+                <span class="site-nav-pill" aria-hidden="true"></span>
                 <a href="index.html" aria-current="page">主页</a>
                 <a href="publication.html">历史展馆</a>
                 <a href="people.html">创客小窝</a>
@@ -85,10 +87,37 @@
         <section class="showcase" aria-labelledby="showcase-title">
             <div class="section-shell showcase-grid">
                 <div class="showcase-heading"><span class="section-index" aria-hidden="true">02 /</span><h2 id="showcase-title">作品展示<span class="heading-dot" aria-hidden="true">.</span></h2><span class="showcase-line" aria-hidden="true"></span><span class="showcase-wordmark" aria-hidden="true">XMU<br>MAKER</span></div>
-                <div class="showcase-player">
-                    <video id="project-video" controls playsinline preload="none" poster="assets/demo/demo-poster.jpg" width="854" height="480" aria-label="协会作品演示视频">
-                        <source src="assets/demo/demo.mp4" type="video/mp4">
-                    </video>
+                <div class="showcase-carousel" role="group" aria-label="作品展示，可左右切换">
+                    <button class="showcase-arrow" type="button" hidden data-step="-1" aria-label="上一个作品"></button>
+                    <div class="showcase-viewport">
+                        <div class="showcase-track">
+                            <div class="showcase-player">
+                                <a class="showcase-facade" href="https://www.bilibili.com/video/BV1cH4y1Y7gC/" target="_blank" rel="noopener noreferrer" data-bvid="BV1cH4y1Y7gC" aria-label="播放作品演示：情侣小电视（B 站）">
+                                    <img src="assets/demo/showcase-1.webp" alt="" width="1280" height="720" loading="lazy" decoding="async">
+                                    <span class="showcase-play" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                            <div class="showcase-player">
+                                <a class="showcase-facade" href="https://www.bilibili.com/video/BV1ubL6zSEwr/" target="_blank" rel="noopener noreferrer" data-bvid="BV1ubL6zSEwr" aria-label="播放作品演示：超迷你 Linux 卡片电脑（B 站）">
+                                    <img src="assets/demo/showcase-2.webp" alt="" width="1280" height="720" loading="lazy" decoding="async">
+                                    <span class="showcase-play" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                            <div class="showcase-player">
+                                <a class="showcase-facade" href="https://www.bilibili.com/video/BV1dQ4y1G7WA/" target="_blank" rel="noopener noreferrer" data-bvid="BV1dQ4y1G7WA" aria-label="播放作品演示：自制“树莓派”真的有那么难吗（硬件篇）（B 站）">
+                                    <img src="assets/demo/showcase-3.webp" alt="" width="1280" height="720" loading="lazy" decoding="async">
+                                    <span class="showcase-play" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                            <div class="showcase-player">
+                                <a class="showcase-facade" href="https://www.bilibili.com/video/BV1ifUMYLEXP/" target="_blank" rel="noopener noreferrer" data-bvid="BV1ifUMYLEXP" aria-label="播放作品演示：自制“树莓派”真的有那么难吗（软件篇）（B 站）">
+                                    <img src="assets/demo/showcase-4.webp" alt="" width="1280" height="720" loading="lazy" decoding="async">
+                                    <span class="showcase-play" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="showcase-arrow" type="button" hidden data-step="1" aria-label="下一个作品"></button>
                 </div>
             </div>
         </section>

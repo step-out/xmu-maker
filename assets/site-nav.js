@@ -79,6 +79,49 @@
         previousMobile = mobile.matches;
     });
 
+    const pill = navigation.querySelector('.site-nav-pill');
+    const links = [...navigation.querySelectorAll('a')];
+    const currentLink = () => navigation.querySelector('a[aria-current="page"]') || links[0];
+
+    // Each page is a real navigation, so a click has no time to play the slide.
+    // Moving the pill on hover/focus instead means it is already in place by the
+    // time the click lands, and the next page paints it at the same spot.
+    function movePill(link, animate) {
+        if (!pill || !link) return;
+        if (!animate) pill.style.transition = 'none';
+        pill.style.width = `${link.offsetWidth}px`;
+        pill.style.transform = `translateY(-50%) translateX(${link.offsetLeft}px)`;
+        if (!animate) {
+            void pill.offsetWidth;
+            pill.style.transition = '';
+        }
+        pill.classList.add('is-ready');
+    }
+
+    function resetPill() {
+        movePill(currentLink(), true);
+    }
+
+    if (pill) {
+        movePill(currentLink(), false);
+
+        links.forEach(link => {
+            link.addEventListener('pointerenter', () => movePill(link, true));
+            link.addEventListener('focus', () => movePill(link, true));
+        });
+
+        navigation.addEventListener('pointerleave', resetPill);
+        navigation.addEventListener('focusout', event => {
+            if (!navigation.contains(event.relatedTarget)) resetPill();
+        });
+        window.addEventListener('resize', () => movePill(currentLink(), false));
+
+        // Cross-document view transitions snapshot this page before playing the
+        // animation. Re-place the pill here so that snapshot never catches it
+        // undrawn (opacity 0) or still parked in the corner.
+        window.addEventListener('pagereveal', () => movePill(currentLink(), false));
+    }
+
     setExpanded(mobile.matches && navigation.contains(document.activeElement));
     document.documentElement.classList.add('site-nav-ready');
 })();

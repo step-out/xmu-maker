@@ -65,8 +65,36 @@ h2 { font-size: clamp(28px, 3vw, 38px); font-weight: 650; letter-spacing: -.035e
 .showcase-heading .heading-dot { color: #95b8ff; }
 .showcase-line { width: 40px; height: 1px; margin-block: 28px; background: #69809d; }
 .showcase-wordmark { margin-top: auto; color: #a9bdd3; font-size: 36px; font-weight: 650; letter-spacing: .04em; line-height: 1.1; }
-.showcase-player { overflow: hidden; align-self: center; border: 1px solid #496079; border-radius: 10px; background: #102036; box-shadow: 0 20px 45px #071c3038; }
-.showcase-player video { width: 100%; height: auto; aspect-ratio: 854 / 480; }
+.showcase-carousel { min-width: 0; }
+.showcase-carousel.is-ready { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; align-self: center; min-width: 0; }
+.showcase-viewport { overflow: hidden; border: 1px solid #496079; border-radius: 10px; background: #102036; box-shadow: 0 20px 45px #071c3038; }
+.showcase-track { display: grid; gap: 16px; }
+.showcase-carousel.is-ready .showcase-track { display: flex; gap: 0; transition: transform .38s cubic-bezier(.4, 0, .2, 1); }
+.showcase-player { flex: 0 0 100%; min-width: 0; }
+.showcase-frame { display: block; width: 100%; height: auto; aspect-ratio: 854 / 480; border: 0; }
+.showcase-arrow[hidden] { display: none; }
+.showcase-arrow { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid #496079; border-radius: 50%; background: transparent; color: #cbd8e6; cursor: pointer; transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
+.showcase-arrow::before { content: ""; width: 9px; height: 9px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; }
+.showcase-arrow[data-step="-1"]::before { margin-left: 4px; transform: rotate(-135deg); }
+.showcase-arrow[data-step="1"]::before { margin-left: -4px; transform: rotate(45deg); }
+.showcase-arrow:hover { border-color: #95b8ff; background: #1d3a5c; color: #fff; }
+.showcase-arrow[data-step="-1"]:hover { transform: translateX(-2px); }
+.showcase-arrow[data-step="1"]:hover { transform: translateX(2px); }
+.showcase-controls { grid-area: 2 / 2; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; column-gap: 12px; }
+.showcase-autoplay, .showcase-original { min-height: 44px; padding: 6px 4px; border: 0; background: transparent; color: #cbd8e6; font-size: 12px; cursor: pointer; }
+.showcase-autoplay:hover, .showcase-original:hover { color: #fff; }
+.showcase a:focus-visible, .showcase button:focus-visible { outline-color: #95b8ff; outline-offset: -3px; }
+.showcase-facade[hidden] { display: none; }
+.showcase-dots { display: flex; align-items: center; justify-content: center; }
+.showcase-dot { display: grid; place-items: center; width: 22px; height: 22px; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
+.showcase-dot::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3f5674; transition: background-color .2s ease, box-shadow .2s ease; }
+.showcase-dot:hover::before { background: #6d89ab; }
+.showcase-dot[aria-current="true"]::before { background: #95b8ff; box-shadow: 0 0 0 3px #95b8ff38; }
+.showcase-facade { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #102036; cursor: pointer; }
+.showcase-facade img { width: 100%; height: auto; aspect-ratio: 854 / 480; object-fit: cover; }
+.showcase-play { position: absolute; top: 50%; left: 50%; display: grid; place-items: center; width: 66px; height: 66px; transform: translate(-50%, -50%); border-radius: 50%; background: #fffefbd9; box-shadow: 0 10px 28px #071c3047; transition: transform .22s ease, background-color .22s ease; }
+.showcase-play::after { content: ""; margin-left: 5px; border-left: 17px solid var(--blue); border-block: 10px solid transparent; }
+.showcase-facade:hover .showcase-play { transform: translate(-50%, -50%) scale(1.08); background: #fffefb; }
 .awards { display: grid; grid-template-columns: 1fr 2.2fr; gap: 64px; padding-block: 88px 96px; }
 .awards-heading h2 { margin-block: 22px; }
 .awards-range { font-size: 13px; letter-spacing: .1em; color: var(--muted); }
@@ -120,6 +148,8 @@ h2 { font-size: clamp(28px, 3vw, 38px); font-weight: 650; letter-spacing: -.035e
     .project-copy p { max-width: none; }
     .showcase { padding-block: 36px 40px; }
     .showcase-grid, .awards { grid-template-columns: 1fr; gap: 28px; }
+    .showcase-carousel { gap: 8px; }
+    .showcase-arrow { width: 34px; height: 34px; }
     .showcase-heading { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 16px; }
     .showcase-heading .section-index { order: 1; margin-left: auto; }
     .showcase-heading h2 { margin: 0; }
@@ -135,8 +165,26 @@ h2 { font-size: clamp(28px, 3vw, 38px); font-weight: 650; letter-spacing: -.035e
     .paper-title { font-size: 15px; }
     .footer-inner { gap: 12px; }
 }
+/* 滚动进场。reveal.js 主动加上 .reveal 才会隐藏，所以没有 JS 时内容照常显示 */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .65s cubic-bezier(.4, 0, .2, 1); transition-delay: var(--reveal-delay, 0ms); }
+.reveal.is-revealed { opacity: 1; transform: none; }
+
+/* 跨页面过渡。不支持的浏览器直接忽略这几条，跳转行为完全不变。
+   注意 view-transition-name 不能嵌套：给 .site-header 命名的话，
+   里面的胶囊会被判定为失效，所以只给胶囊自己命名。 */
+@view-transition { navigation: auto; }
+.site-nav-pill { view-transition-name: nav-pill; }
+::view-transition-old(root) { animation: vt-fade-out .18s ease both; }
+::view-transition-new(root) { animation: vt-fade-in .22s ease both; }
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in { from { opacity: 0; } }
+/* 默认 0.25s，蓝色胶囊要滑得比页面本身更明显一点 */
+::view-transition-group(nav-pill) { animation-duration: .34s; animation-timing-function: cubic-bezier(.4, 0, .2, 1); }
+
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition: none !important; }
-    .button:hover, .project-card:hover img { transform: none; }
+    .button:hover, .project-card:hover img, .showcase-arrow:hover { transform: none; }
+    /* 上面那条过渡对视图过渡的伪元素无效（它们用的是 animation），得单独压掉 */
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation-duration: .01s !important; }
 }
